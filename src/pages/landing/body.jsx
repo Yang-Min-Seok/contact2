@@ -50,9 +50,12 @@ function Body() {
         return true;
     }
 
-    const handle_onclick_start_btn = (e) => {
+    const handle_onclick_start_btn = () => {
         if (is_proper_num(court_num, ppl_num, game_num)) {
-            navigate(`/shuffle`, {state : {court_num : court_num, ppl_num : ppl_num, game_num : game_num}});
+            sessionStorage.setItem('courtNum', court_num);
+            sessionStorage.setItem('pplNum', ppl_num);
+            sessionStorage.setItem('gameNum', game_num);
+            navigate(`/shuffle`);
         }
     };
 

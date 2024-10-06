@@ -1,14 +1,14 @@
 import { BodyDiv } from "./style";
-import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 function Body() {
     
-    const location = useLocation();
-    const courtNum = location.state.court_num;
-    const pplNum = location.state.ppl_num;
-    const gameNum = Number(location.state.game_num);
-    const gameCnt = location.state.gameCnt;
-    const games = location.state.games;
+    const gameNum = sessionStorage.getItem('gameNum');
+    const courtNum = sessionStorage.getItem('courtNum');
+    const pplNum = sessionStorage.getItem('pplNum');
+    const gameCntAsString = sessionStorage.getItem('gameCnt');
+    const gameCnt = gameCntAsString ? JSON.parse(gameCntAsString) : [];
+    const gamesAsString = sessionStorage.getItem('games');
+    const games = gamesAsString ? JSON.parse(gamesAsString) : [];
 
     const [ currGame, setCurrGame ] = useState(0);
     const [ popUp, setPopUp ] = useState(false);

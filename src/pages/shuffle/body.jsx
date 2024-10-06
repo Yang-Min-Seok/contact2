@@ -1,13 +1,12 @@
 import { BodyDiv } from "./style";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 function Body() {
     
-    const location = useLocation();
     const navigate = useNavigate();
-    const courtNum = location.state.court_num;
-    const pplNum = location.state.ppl_num;
-    const gameNum = Number(location.state.game_num);
+    const gameNum = sessionStorage.getItem('gameNum');
+    const courtNum = sessionStorage.getItem('courtNum');
+    const pplNum = sessionStorage.getItem('pplNum');
     const [ popUp, setPopUp ] = useState(false);
     const [ gameCnt, setGameCnt ] = useState([]);
     const [ games, setGames ] = useState([]);
@@ -197,7 +196,9 @@ function Body() {
         } else if (order == 'confirmBtn') {
             const ans = window.confirm('確定しますか？');
             if (ans) {
-                navigate(`/result`,  {state : {court_num : courtNum, ppl_num : pplNum, game_num : gameNum, games : games, gameCnt : gameCnt}});
+                sessionStorage.setItem('gameCnt', JSON.stringify(gameCnt));
+                sessionStorage.setItem('games', JSON.stringify(games));
+                navigate(`/result`);
             }
         }
     }
