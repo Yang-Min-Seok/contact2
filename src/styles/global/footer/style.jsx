@@ -3,7 +3,6 @@ import { styled } from "styled-components";
 export const FooterDiv = styled.div`
     text-align: center;
     width: 100%;
-    position: relative;
     p{  
         margin: 0;
         font-size: 60%;
