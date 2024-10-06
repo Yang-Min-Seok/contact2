@@ -49,7 +49,7 @@ https://github.com/user-attachments/assets/e07cd4fa-8794-4ef6-aabc-3d4729385e59
 
 #### ライン共有ボタンを押して簡単に今日の配分表を共有
 
-![IMG_3721](https://github.com/user-attachments/assets/93c5330a-8e62-406a-a9f1-3e6a21dc9a98)
+<img width="965" alt="스크린샷 2024-10-06 16 43 22" src="https://github.com/user-attachments/assets/894baac7-b992-4462-81ac-3d5f50bf0146">
 
 ---
 
