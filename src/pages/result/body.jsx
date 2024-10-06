@@ -96,7 +96,7 @@ function Body() {
             const gameCntParam = encodeURIComponent(JSON.stringify(gameCnt));
 
             // dynamicUrl
-            const dynamicUrl = `https://social-plugins.line.me/lineit/share?url=https://contact2-red.vercel.app/share/${gameNum}/${courtNum}/${pplNum}/${gamesParam}/${gameCntParam}`;
+            const dynamicUrl = `https://social-plugins.line.me/lineit/share?url=https://contact2-red.vercel.app/`;
             
             // 새 창에서 URL 열기
             window.open(dynamicUrl, "_blank", "oopener,noreferrer");
