@@ -11,7 +11,7 @@ function App() {
           <Route path={`/`} element={<Landing />}></Route>
           <Route path={`/shuffle`} element={<Shuffle />}></Route>
           <Route path={`/result`} element={<Result />}></Route>
-          <Route path={`/share/:gameNum/:courtNum/:pplNum/:gamesParam/:gameCntParam`} element={<Share />}></Route>
+          <Route path={`/share/:gameNum/:courtNum/:pplNum/:gameCntParam/:gamesParam`} element={<Share />}></Route>
         </Routes>
       </Router>
   );

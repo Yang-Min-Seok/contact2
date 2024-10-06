@@ -1,5 +1,7 @@
 import { BodyDiv } from "./style";
 import { useState, useEffect } from "react";
+import { getShortenUrl } from "../../apis/Apis";
+
 function Body() {
     
     const gameNum = sessionStorage.getItem('gameNum');
@@ -91,23 +93,30 @@ function Body() {
                 setCurrGame(currGame + 1);
             }
         } else if (order === 'shareBtn') {
-            // games 배열을 JSON으로 변환한 후, 대괄호와 따옴표를 다른 문자로 대체
-            const gamesParam = JSON.stringify(games)
-                .replace(/\[/g, '%5B')
-                .replace(/\]/g, '%5D')
-                .replace(/"/g, '%22'); // 따옴표를 URL 인코딩으로 변환
+            
+            // gamesParam을 '/'로 구분해서 만들기
+            let gamesParamArray = [];
+            for (let i = 0; i < gameNum; i++) {
+                for (let j = 0; j < courtNum; j++) {
+                    for (let k = 0; k < 4; k++) {
+                        gamesParamArray.push(games[i][j][0][k]);
+                    }
+                }
+            }
+            
+            // 배열을 '/'로 구분된 문자열로 변환
+            const gamesParam = gamesParamArray.join(',');
 
             const gameCntParam = JSON.stringify(gameCnt)
                 .replace(/\[/g, '%5B')
                 .replace(/\]/g, '%5D')
                 .replace(/"/g, '%22'); // 따옴표를 URL 인코딩으로 변환
 
-            // URL 인코딩 처리
-            const encodedGamesParam = encodeURIComponent(gamesParam);
-            const encodedGameCntParam = encodeURIComponent(gameCntParam);
+            // originalUrl
+            const originalUrl = `https://contact2-red.vercel.app/share/${gameNum}/${courtNum}/${pplNum}/${gameCntParam}/${gamesParam}`;
 
             // dynamicUrl
-            const dynamicUrl = `https://social-plugins.line.me/lineit/share?url=https://contact2-red.vercel.app/`;
+            const dynamicUrl = `https://social-plugins.line.me/lineit/share?url=${originalUrl}`;
 
             // 새 창에서 URL 열기
             window.open(dynamicUrl, "_blank", "oopener,noreferrer");

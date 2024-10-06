@@ -2,16 +2,28 @@ import { BodyDiv } from "./style";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 function Body() {
-    const { gameNum, courtNum, pplNum, gamesParam, gameCntParam } = useParams();
+    const { gameNum, courtNum, pplNum, gameCntParam, gamesParam } = useParams();
+    
+    const gamesAsFirstDimension = gamesParam.split(",");
+    const games = [];
 
-    // gamesParam과 gameCntParam을 디코딩하고 JSON으로 변환
-    const games = gamesParam 
-        ? JSON.parse(decodeURIComponent(gamesParam.replace(/%5B/g, '[').replace(/%5D/g, ']').replace(/%22/g, '"'))) 
-        : [];
+    let idx = 0;
+    
+    for (let i = 0; i < gameNum; i++) {
+        games.push([]);
+        for (let j = 0; j < courtNum; j++) {
+            games[i].push([]);
+            for (let k = 0; k < 4; k++) {
+                games[i][j].push(Number(gamesAsFirstDimension[idx]));
+                idx++;
+            }
+        }
+    }
+
     const gameCnt = gameCntParam 
         ? JSON.parse(decodeURIComponent(gameCntParam.replace(/%5B/g, '[').replace(/%5D/g, ']').replace(/%22/g, '"'))) 
         : [];
-
+    
     const [ currGame, setCurrGame ] = useState(0);
     const [ popUp, setPopUp ] = useState(false);
 
@@ -75,11 +87,11 @@ function Body() {
             const prevContent = targetTd.innerHTML;
             targetTd.innerHTML = ``;
             targetTd.innerHTML = prevContent + `
-                ${participants[0][i]}
+                ${participants[i]}
             `;
         }
-
     }
+
     // pointing currGame
     const handleOnClickBtns = (e) => {
         const order = e.target.id;
