@@ -170,8 +170,8 @@ function Body() {
                 </tbody>
             </table>
             <div>
-                <p id="prevBtn" onClick={handleOnClickBtns}>Prev</p>
-                <p id="nextBtn" onClick={handleOnClickBtns}>Next</p>
+                <p id="prevBtn" onClick={handleOnClickBtns}>前</p>
+                <p id="nextBtn" onClick={handleOnClickBtns}>次</p>
             </div>
             {popUp && (
                 <div id="popUpOverlay" onClick={handleOnClickPopUpBtn}>

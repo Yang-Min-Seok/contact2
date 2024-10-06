@@ -186,7 +186,7 @@ function Body() {
                 </tbody>
             </table>
             <div>
-                <p id="prevBtn" onClick={handleOnClickBtns}>先</p>
+                <p id="prevBtn" onClick={handleOnClickBtns}>前</p>
                 <p id="shareBtn" onClick={handleOnClickBtns}></p>
                 <p id="nextBtn" onClick={handleOnClickBtns}>次</p>
             </div>
