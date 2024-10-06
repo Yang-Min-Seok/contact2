@@ -7,6 +7,7 @@ export const BodyDiv = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
 
     p:nth-child(1) {
         margin: 3% auto;
