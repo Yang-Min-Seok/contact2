@@ -1,6 +1,8 @@
 import { styled } from "styled-components";
 
 export const BodyDiv = styled.div`
+    height: 30px;
+    
     p{  
         margin: 2% 0;
         text-align: center;
