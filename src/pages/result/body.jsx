@@ -91,18 +91,29 @@ function Body() {
                 setCurrGame(currGame + 1);
             }
         } else if (order === 'shareBtn') {
-            // games 배열을 JSON으로 변환한 후, URL 인코딩 처리
-            const gamesParam = encodeURIComponent(JSON.stringify(games)).replace(/\[/g, '%5B').replace(/\]/g, '%5D');
-            const gameCntParam = encodeURIComponent(JSON.stringify(gameCnt)).replace(/\[/g, '%5B').replace(/\]/g, '%5D');
-    
+            // games 배열을 JSON으로 변환한 후, 대괄호와 따옴표를 다른 문자로 대체
+            const gamesParam = JSON.stringify(games)
+                .replace(/\[/g, '%5B')
+                .replace(/\]/g, '%5D')
+                .replace(/"/g, '%22'); // 따옴표를 URL 인코딩으로 변환
+
+            const gameCntParam = JSON.stringify(gameCnt)
+                .replace(/\[/g, '%5B')
+                .replace(/\]/g, '%5D')
+                .replace(/"/g, '%22'); // 따옴표를 URL 인코딩으로 변환
+
+            // URL 인코딩 처리
+            const encodedGamesParam = encodeURIComponent(gamesParam);
+            const encodedGameCntParam = encodeURIComponent(gameCntParam);
+
             // dynamicUrl
-            const dynamicUrl = `https://social-plugins.line.me/lineit/share?url=https://contact2-red.vercel.app/share/${gameNum}/${courtNum}/${pplNum}/${gamesParam}/${gameCntParam}`;
-    
+            const dynamicUrl = `https://social-plugins.line.me/lineit/share?url=https://contact2-red.vercel.app/share/${gameNum}/${courtNum}/${pplNum}/${encodedGamesParam}/${encodedGameCntParam}`;
+
             // 새 창에서 URL 열기
             window.open(dynamicUrl, "_blank", "oopener,noreferrer");
         }
     }
-    
+
     // handling pop up event
     const handleOnClickPopUpBtn = (e) => {
         const target = e.target.id;
