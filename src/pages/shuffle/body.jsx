@@ -197,7 +197,7 @@ function Body() {
         } else if (order == 'confirmBtn') {
             const ans = window.confirm('確定しますか？');
             if (ans) {
-                navigate(`/result`,  {state : {court_num : courtNum, ppl_num : pplNum, game_num : gameNum, games : games}});
+                navigate(`/result`,  {state : {court_num : courtNum, ppl_num : pplNum, game_num : gameNum, games : games, gameCnt : gameCnt}});
             }
         }
     }

@@ -12,7 +12,7 @@ function App() {
           <Route path={`/`} element={<Landing />}></Route>
           <Route path={`/shuffle`} element={<Shuffle />}></Route>
           <Route path={`/result`} element={<Result />}></Route>
-          <Route path={`/share/:data`} element={<Share />}></Route>
+          <Route path={`/share/:gameNum/:courtNum/:gamesParam`} element={<Share />}></Route>
         </Routes>
       </Router>
     </div>

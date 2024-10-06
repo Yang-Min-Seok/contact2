@@ -77,36 +77,13 @@ export const BodyDiv = styled.div`
             font-weight: 600;
             color: #000;
         }
-    }
-
-    div:nth-child(4) {
-        width: 80%;
-        display: flex;
-        margin: 3% auto;
-        justify-content: space-around;
-        p {
-            margin: 0 auto;
-            font-size: 130%;
-            line-height: 3.5;
-            width: 25%;
-            text-align: center;
-            border: 2px solid red;
-            box-sizing: border-box;
-            border-radius: 30%;
-            font-weight: 600;
-            color: #000;
-        }
-        p:nth-child(1), p:nth-child(3) {
-            border: 2px solid brown;
-        }
-        p:nth-child(1) {
+        p:nth-child(2) {
             background-image: url(${lineShare});
             background-repeat: no-repeat;
             background-position: center;
             background-size: cover;
         }
     }
-
 
     // pop up
     #popUpOverlay{
