@@ -6,7 +6,6 @@ import Share from "./pages/share";
 
 function App() {
   return (
-    <div>
       <Router>
         <Routes>
           <Route path={`/`} element={<Landing />}></Route>
@@ -15,7 +14,6 @@ function App() {
           <Route path={`/share/:gameNum/:courtNum/:pplNum/:gamesParam/:gameCntParam`} element={<Share />}></Route>
         </Routes>
       </Router>
-    </div>
   );
 }
 
