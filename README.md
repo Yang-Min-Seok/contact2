@@ -4,47 +4,58 @@
 
 バドミントンコートの配分WEBサイト
 
-#### リンク：https://contact-eta-gules.vercel.app/
+#### リンク：https://contact2-red.vercel.app/
 #### QR code
 
-![qrcode_contact-eta-gules vercel app](https://github.com/user-attachments/assets/f6bf6818-3361-4a1c-aba9-a12221e81ff7)
+![qrcode_contact2-red vercel app](https://github.com/user-attachments/assets/2bbb97b9-5775-4e5f-a4ed-4f30801ee05f)
 
 
 ---
 
 #### 初期画面：コート数、人数、ゲーム数の入力
 
-<img width="432" alt="스크린샷 2024-09-28 17 20 09" src="https://github.com/user-attachments/assets/2370a284-b818-42cb-a861-ebddca084fec">
+<img width="432" alt="스크린샷 2024-10-06 16 24 09" src="https://github.com/user-attachments/assets/08cd049f-2576-4299-b98c-7a6894d9e5bb">
 
 ---
 
 #### 初期画面：正しくない情報の入力を防止
 
-<img width="433" alt="스크린샷 2024-09-28 17 20 27" src="https://github.com/user-attachments/assets/c87029b9-eff4-428c-beb4-8e5f531e0b5d">
+<img width="430" alt="스크린샷 2024-10-06 16 24 25" src="https://github.com/user-attachments/assets/eab2e69d-6145-4da6-8851-488d162e19ac">
 
 ---
 
 #### 初期画面：正しい情報の入力が終わったらスタートボタン活性化
 
-<img width="433" alt="스크린샷 2024-09-28 17 20 43" src="https://github.com/user-attachments/assets/e9ab5c92-87b0-4320-9e24-2a9079cd10e4">
+<img width="430" alt="스크린샷 2024-10-06 16 32 53" src="https://github.com/user-attachments/assets/af2a5b4e-8050-4b14-8de8-bd07aee6aa38">
 
 ---
 
-#### 配分画面：コートごとの配分状態を確認
+#### 組み合わせ決定画面：一人当たりのゲーム数確認、適切な組み合わせが出るまでシャッフル
 
-<img width="431" alt="스크린샷 2024-09-28 17 20 57" src="https://github.com/user-attachments/assets/5cc1aaec-5dcf-4c45-9495-64e0450da752">
+<img width="430" alt="스크린샷 2024-10-06 16 26 46" src="https://github.com/user-attachments/assets/f9b1e7d4-da00-4ac6-b79c-060b43102d0b">
 
----
 
-#### ポップアップ画面：「一人当たりのゲーム数を見る」ボタンのクリック時
-
-<img width="426" alt="스크린샷 2024-09-28 17 21 07" src="https://github.com/user-attachments/assets/a7405add-24a2-48f7-b1bb-c46b3181eb34">
+https://github.com/user-attachments/assets/0dee438e-8b38-48ee-bbb0-a2447d748c83
 
 ---
 
-#### 配分画面：現時点のゲームに協調効果
+#### 決定された配分表画面：決定した配分表を確認、前、後のゲームへの表示変え
 
-<img width="432" alt="스크린샷 2024-09-28 17 21 18" src="https://github.com/user-attachments/assets/b8e457b2-adef-4552-ad32-59907c32f9c5">
+<img width="432" alt="스크린샷 2024-10-06 16 26 32" src="https://github.com/user-attachments/assets/9debd6bb-823b-4a5d-b9fb-f621847d1681">
+
+https://github.com/user-attachments/assets/e07cd4fa-8794-4ef6-aabc-3d4729385e59
+
+---
+
+#### ライン共有ボタンを押して簡単に今日の配分表を共有
+
+![IMG_3721](https://github.com/user-attachments/assets/93c5330a-8e62-406a-a9f1-3e6a21dc9a98)
+
+---
+
+#### 共有されたメンバーも配分表を確認、前、後のゲームへの表示変え
+
+<img width="432" alt="스크린샷 2024-10-06 16 29 10" src="https://github.com/user-attachments/assets/7850d05b-4db1-4f85-b190-6c043c854617">
 
 ---
 
