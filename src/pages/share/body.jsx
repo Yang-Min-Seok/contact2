@@ -2,13 +2,15 @@ import { BodyDiv } from "./style";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 function Body() {
-    const gameNum = Number(useParams().gameNum);
-    const courtNum = Number(useParams().courtNum);
-    const pplNum = Number(useParams().pplNum);
-    const gamesParam = useParams().gamesParam;
-    const games = gamesParam ? JSON.parse(decodeURIComponent(gamesParam)) : [];
-    const gameCntParam = useParams().gameCntParam;
-    const gameCnt = gameCntParam ? JSON.parse(decodeURIComponent(gameCntParam)) : [];
+    const { gameNum, courtNum, pplNum, gamesParam, gameCntParam } = useParams();
+
+    // gamesParam과 gameCntParam을 디코딩하고 JSON으로 변환
+    const games = gamesParam 
+        ? JSON.parse(decodeURIComponent(gamesParam.replace(/%5B/g, '[').replace(/%5D/g, ']').replace(/%22/g, '"'))) 
+        : [];
+    const gameCnt = gameCntParam 
+        ? JSON.parse(decodeURIComponent(gameCntParam.replace(/%5B/g, '[').replace(/%5D/g, ']').replace(/%22/g, '"'))) 
+        : [];
 
     const [ currGame, setCurrGame ] = useState(0);
     const [ popUp, setPopUp ] = useState(false);
