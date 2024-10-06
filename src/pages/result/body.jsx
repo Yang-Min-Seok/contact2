@@ -87,22 +87,22 @@ function Body() {
                 setCurrGame(currGame - 1);
             }
         } else if (order === 'nextBtn') {
-            if(currGame !== gameNum - 1) {
+            if (currGame !== gameNum - 1) {
                 setCurrGame(currGame + 1);
             }
         } else if (order === 'shareBtn') {
             // games 배열을 JSON으로 변환한 후, URL 인코딩 처리
-            const gamesParam = encodeURIComponent(JSON.stringify(games));
-            const gameCntParam = encodeURIComponent(JSON.stringify(gameCnt));
-
+            const gamesParam = encodeURIComponent(JSON.stringify(games)).replace(/\[/g, '%5B').replace(/\]/g, '%5D');
+            const gameCntParam = encodeURIComponent(JSON.stringify(gameCnt)).replace(/\[/g, '%5B').replace(/\]/g, '%5D');
+    
             // dynamicUrl
             const dynamicUrl = `https://social-plugins.line.me/lineit/share?url=https://contact2-red.vercel.app/share/${gameNum}/${courtNum}/${pplNum}/${gamesParam}/${gameCntParam}`;
-            
+    
             // 새 창에서 URL 열기
             window.open(dynamicUrl, "_blank", "oopener,noreferrer");
         }
     }
-
+    
     // handling pop up event
     const handleOnClickPopUpBtn = (e) => {
         const target = e.target.id;
