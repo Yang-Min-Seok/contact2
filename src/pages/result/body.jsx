@@ -1,6 +1,5 @@
 import { BodyDiv } from "./style";
 import { useState, useEffect } from "react";
-import { getShortenUrl } from "../../apis/Apis";
 
 function Body() {
     
