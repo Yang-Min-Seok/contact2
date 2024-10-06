@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import lineShare from "../../assets/images/lineShare.png";
+import shuffle from "./../../assets/images/shuffle.png";
+import confirm from "./../../assets/images/confirm.png";
 
 export const BodyDiv = styled.div`
     height: 800px;
@@ -63,47 +64,43 @@ export const BodyDiv = styled.div`
     div:nth-child(3) {
         display: flex;
         width: 80%;
-        margin: 3% auto;
+        height: 80px;
+        margin: 7% auto;
         justify-content: space-around;
         p{
             margin: 0 auto;
-            font-size: 130%;
-            line-height: 3.5;
             width: 25%;
-            text-align: center;
-            border: 2px solid brown;
-            box-sizing: border-box;
-            border-radius: 30%;
-            font-weight: 600;
-            color: #000;
-        }
-    }
-
-    div:nth-child(4) {
-        width: 80%;
-        display: flex;
-        margin: 3% auto;
-        justify-content: space-around;
-        p {
-            margin: 0 auto;
-            font-size: 130%;
-            line-height: 3.5;
-            width: 25%;
-            text-align: center;
-            border: 2px solid red;
-            box-sizing: border-box;
-            border-radius: 30%;
-            font-weight: 600;
-            color: #000;
-        }
-        p:nth-child(1), p:nth-child(3) {
-            border: 2px solid brown;
-        }
-        p:nth-child(1) {
-            background-image: url(${lineShare});
-            background-repeat: no-repeat;
+            height: 100%;
+            border: none;
             background-position: center;
-            background-size: cover;
+            background-repeat: no-repeat;
+            background-size: contain;
+            position: relative;
+        }
+        & p:nth-child(1) {
+            background-image: url(${shuffle});
+            transition: all 300ms;
+        }
+        & p:nth-child(2) {
+            background-image: url(${confirm});
+        }
+        & p::before { 
+            position: absolute;
+            top: 100%;           
+            left: 50%;           
+            transform: translateX(-50%); 
+            white-space: nowrap;
+            font-family: sans-serif;
+            font-size : 80%;
+            font-weight: 700;
+            line-height: 1;
+        }
+        & p:nth-child(1)::before {
+            content: "シャッフル";
+            
+        }
+        & p:nth-child(2)::before {
+            content: "確定";
         }
     }
 

@@ -8,22 +8,9 @@ function Body() {
     const courtNum = location.state.court_num;
     const pplNum = location.state.ppl_num;
     const gameNum = Number(location.state.game_num);
-    const [ currGame, setCurrGame ] = useState(0);
     const [ popUp, setPopUp ] = useState(false);
     const [ gameCnt, setGameCnt ] = useState([]);
-
-    // point current game
-    const pointCurrGame = () => {
-        for (let i = 0; i < gameNum; i++) {
-            const gameTr = document.getElementById(`game${i}`);
-            gameTr.style.backgroundColor = '#fff';
-            gameTr.style.color = '#000';
-        }
-
-        const currGameTr = document.getElementById(`game${currGame}`);
-        currGameTr.style.backgroundColor = '#AE905E';
-        currGameTr.style.color = '#fff';
-    }
+    const [ games, setGames ] = useState([]);
 
     // make frame
     const makeTableFrame = () => {
@@ -108,6 +95,23 @@ function Body() {
 
         // popUp 반영용
         setGameCnt(gamePerPpl);
+
+        // /result 전송용
+        getGames();
+    }
+
+    const getGames = () => {
+        let games = [];
+        for (let i = 0; i < gameNum; i++) {
+            games.push([]);
+            for (let j = 0; j < courtNum; j++) {
+                games[i].push([]);
+                const gameInnerHtml = document.getElementById(`game${i}court${j}`).innerText;
+                const game = gameInnerHtml.split(' ');
+                games[i][j].push(game);
+            }
+        }
+        setGames(games);
     }
 
     const duplicatedPairExists = (prevGameComb, currGameMemberRandom, participants) => {
@@ -182,31 +186,24 @@ function Body() {
         return shuffled;
       }
     
-    // pointing currGame
+    // handling btn Click events
     const handleOnClickBtns = (e) => {
         const order = e.target.id;
-        if (order === 'prevBtn') {
-            if (currGame !== 0) {
-                setCurrGame(currGame - 1);
-            }
-        } else if (order === 'nextBtn') {
-            if(currGame !== gameNum - 1) {
-                setCurrGame(currGame + 1);
-            }
-        } else if (order === 'exitBtn') {
-            const ans = window.confirm('本当に戻りますか？');
+        if (order === 'shuffleBtn') {
+            fillUpTable();
+            const shuffleBtn = document.getElementById('shuffleBtn');
+            shuffleBtn.style.transform = 'rotate(90deg)';
+            setTimeout(shuffleEventOver, 300);
+        } else if (order == 'confirmBtn') {
+            const ans = window.confirm('確定しますか？');
             if (ans) {
-                navigate('/');
+                navigate(`/result`,  {state : {court_num : courtNum, ppl_num : pplNum, game_num : gameNum, games : games}});
             }
-        } else if (order === 'shuffleBtn') {
-            const ans = window.confirm('もう一度混ぜますか？(戻れません)');
-            if (ans) {
-                fillUpTable();
-            }
-        } else if (order === 'shareBtn') {
-            const dynamicUrl = `https://social-plugins.line.me/lineit/share?url=https://contact-eta-gules.vercel.app/`;
-            window.open(dynamicUrl, "_blank", "oopener,noreferrer");
         }
+    }
+    const shuffleEventOver = () => {
+        const shuffleBtn = document.getElementById('shuffleBtn');
+        shuffleBtn.style.transform = 'rotate(0deg)';
     }
 
     // handling pop up event
@@ -250,11 +247,6 @@ function Body() {
         fillUpTable();
     }, [])
 
-    // pointing currGame
-    useEffect(() => {
-        pointCurrGame();
-    }, [currGame])
-
     // popUp
     useEffect(() => {
         makePopUpFrame();
@@ -273,13 +265,8 @@ function Body() {
                 </tbody>
             </table>
             <div>
-                <p id="prevBtn" onClick={handleOnClickBtns}>Prev</p>
-                <p id="nextBtn" onClick={handleOnClickBtns}>Next</p>
-            </div>
-            <div>
-                <p id="shareBtn" onClick={handleOnClickBtns}></p>
-                <p id="exitBtn" onClick={handleOnClickBtns}>Quit</p>
-                <p id="shuffleBtn" onClick={handleOnClickBtns}>Shuffle</p>
+                <p id="shuffleBtn" onClick={handleOnClickBtns}></p>
+                <p id="confirmBtn" onClick={handleOnClickBtns}></p>
             </div>
             {popUp && (
                 <div id="popUpOverlay" onClick={handleOnClickPopUpBtn}>
