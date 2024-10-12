@@ -1,7 +1,15 @@
 import { BodyDiv } from "./style";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { Helmet } from "react-helmet-async";
+
 function Body() {
+    // today's format encoding (yyyy年mm月dd日)
+    const today = new Date();
+    const formattedDate = `${today.getFullYear()}年${(today.getMonth() + 1)
+    .toString()
+    .padStart(2, '0')}月${today.getDate().toString().padStart(2, '0')}日`;
+
     const { gameNum, courtNum, pplNum, gameCntParam, gamesParam } = useParams();
     
     const gamesAsFirstDimension = gamesParam.split(",");
@@ -160,6 +168,11 @@ function Body() {
 
     return (
         <BodyDiv>
+            
+            <Helmet>
+                <meta property="og:description" content={`${formattedDate}のコート配分です:)`} />
+            </Helmet>
+
             <p id="popUpBtn" onClick={handleOnClickPopUpBtn}>一人当たりのゲーム数を見る</p>
             <table>
                 <thead>
