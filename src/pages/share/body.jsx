@@ -4,19 +4,19 @@ import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 
 function Body() {
-    // today's format encoding (yyyy年mm月dd日)
+    // today's format (yyyy年mm月dd日)
     const today = new Date();
     const formattedDate = `${today.getFullYear()}年${(today.getMonth() + 1)
     .toString()
     .padStart(2, '0')}月${today.getDate().toString().padStart(2, '0')}日`;
 
+    // get info from params
     const { gameNum, courtNum, pplNum, gameCntParam, gamesParam } = useParams();
     
-    const gamesAsFirstDimension = gamesParam.split(",");
+    // decode games
+    const gamesAsFirstDimension = gamesParam.split(',');
     const games = [];
-
     let idx = 0;
-    
     for (let i = 0; i < gameNum; i++) {
         games.push([]);
         for (let j = 0; j < courtNum; j++) {
@@ -28,8 +28,9 @@ function Body() {
         }
     }
 
+    // decode gameCnt
     const gameCnt = gameCntParam 
-        ? JSON.parse(decodeURIComponent()) : [];
+        ? JSON.parse(decodeURIComponent(gameCntParam.replace(/%5B/g, '[').replace(/%5D/g, ']'))) : [];
     
     const [ currGame, setCurrGame ] = useState(0);
     const [ popUp, setPopUp ] = useState(false);

@@ -93,7 +93,7 @@ function Body() {
             }
         } else if (order === 'shareBtn') {
             
-            // gamesParam을 '/'로 구분해서 만들기
+            // gamesParam을 ','로 구분해서 만들기
             let gamesParamArray = [];
             for (let i = 0; i < gameNum; i++) {
                 for (let j = 0; j < courtNum; j++) {
@@ -103,16 +103,18 @@ function Body() {
                 }
             }
             
-            // 배열을 '/'로 구분된 문자열로 변환
+            // encode gameCntParam
+            const gameCntParam = JSON.stringify(gameCnt)
+            .replace(/\[/g, '%5B') // encoding rule (never touch)
+            .replace(/\]/g, '%5D'); // encoding rule (never touch)
+            // encode gamesParam
             const gamesParam = gamesParamArray.join(',');
 
-            const gameCntParam = JSON.stringify(gameCnt)
-            //     .replace(/\[/g, '%5B')
-            //     .replace(/\]/g, '%5D')
-            //     .replace(/"/g, '%22'); // 따옴표를 URL 인코딩으로 변환
-
-            // originalUrl
+            // originalUrl (for deploy)
             const originalUrl = `https://contact2-red.vercel.app/share/${gameNum}/${courtNum}/${pplNum}/${gameCntParam}/${gamesParam}`;
+            
+            // // originalUrl (for develop)
+            // const originalUrl = `http://localhost:5173/share/${gameNum}/${courtNum}/${pplNum}/${gameCntParam}/${gamesParam}`;
 
             // dynamicUrl
             const dynamicUrl = `https://social-plugins.line.me/lineit/share?url=${originalUrl}`;
