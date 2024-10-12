@@ -106,13 +106,13 @@ function Body() {
             // 배열을 '/'로 구분된 문자열로 변환
             const gamesParam = gamesParamArray.join(',');
 
-            // const gameCntParam = JSON.stringify(gameCnt)
+            const gameCntParam = JSON.stringify(gameCnt)
             //     .replace(/\[/g, '%5B')
             //     .replace(/\]/g, '%5D')
             //     .replace(/"/g, '%22'); // 따옴표를 URL 인코딩으로 변환
 
             // originalUrl
-            const originalUrl = `https://contact2-red.vercel.app/share/${gameNum}/${courtNum}/${pplNum}/${gameCnt}/${gamesParam}`;
+            const originalUrl = `https://contact2-red.vercel.app/share/${gameNum}/${courtNum}/${pplNum}/${gameCntParam}/${gamesParam}`;
 
             // dynamicUrl
             const dynamicUrl = `https://social-plugins.line.me/lineit/share?url=${originalUrl}`;

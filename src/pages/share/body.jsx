@@ -10,7 +10,7 @@ function Body() {
     .toString()
     .padStart(2, '0')}月${today.getDate().toString().padStart(2, '0')}日`;
 
-    const { gameNum, courtNum, pplNum, gameCnt, gamesParam } = useParams();
+    const { gameNum, courtNum, pplNum, gameCntParam, gamesParam } = useParams();
     
     const gamesAsFirstDimension = gamesParam.split(",");
     const games = [];
@@ -28,9 +28,8 @@ function Body() {
         }
     }
 
-    // const gameCnt = gameCntParam 
-    //     ? JSON.parse(decodeURIComponent(gameCntParam.replace(/%5B/g, '[').replace(/%5D/g, ']').replace(/%22/g, '"'))) 
-    //     : [];
+    const gameCnt = gameCntParam 
+        ? JSON.parse(decodeURIComponent()) : [];
     
     const [ currGame, setCurrGame ] = useState(0);
     const [ popUp, setPopUp ] = useState(false);
